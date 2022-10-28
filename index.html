@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<script type="text/javascript" 
+    src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">  
+    </script> 
+	
+	<script type="text/javascript" src="/jquery.csv.js"></script>
+	
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Generate Responses to Question Submissions</h1>
+
+<div id="container">
+
+	<div id="left_div">
+
+		<p>Is this question ready for moderator review?</p>
+		  <input type="radio" id="stub_yes" name="stub" value="Yes">
+		  <label for="stub_yes">Yes</label>
+		  <input type="radio" id="stub_no" name="stub" value="No" class="show_hide" rel="#question_div">
+		  <label for="stub_no">No</label>
+
+		  <br>  
+
+		<p id="output"></p>
+
+
+		<div id="question_div">
+			<p>Question div</p>
+
+			  
+			<p>Is the background material sufficient?</p>
+			  <input type="radio" id="background_yes" name="background" value="Yes">
+			  <label for="background_yes">Yes</label>
+			  <input type="radio" id="background_no" name="background" value="No">
+			  <label for="background_no">No</label>
+			  
+			<p>Does the background have links to back up sources? (also check to make sure the links work)</p>
+			  <input type="radio" id="links_yes" name="links" value="Yes">
+			  <label for="links">Yes</label>
+			  <input type="radio" id="links_no" name="links" value="No">
+			  <label for="links_no">No</label>
+			  
+			<p>Are all parts of the question background and resolution criteria original, or if parts are taken from other sources are Wikipedia are they clearly quoted and attributed?</p>
+			  <input type="radio" id="copy_yes" name="copy" value="Yes">
+			  <label for="copy">Yes</label>
+			  <input type="radio" id="copy_no" name="copy" value="No">
+			  <label for="copy_no">No</label>
+			  
+			<p>Are the dates formatted correctly (e.g. "January 1, 2040")</p>
+			  <input type="radio" id="date_format_yes" name="date_format" value="Yes">
+			  <label for="date_format">Yes</label>
+			  <input type="radio" id="date_format_no" name="date_format" value="No">
+			  <label for="date_format">No</label>
+			  
+			<p>Does the question have an authoritative and clear resolution source?</p>
+			<input type="radio" id="resolution_source_yes" name="resolution_source" value="Yes">
+			<label for="resolution_source">Yes</label>
+			<input type="radio" id="resolution_source_no" name="resolution_source" value="No">
+			<label for="resolution_source">No</label>
+
+			<p>Does the question have a clear and unambiguous resolution method?</p>
+			<input type="radio" id="resolution_method_yes" name="resolution_method" value="Yes">
+			<label for="resolution_method">Yes</label>
+			<input type="radio" id="resolution_method_no" name="resolution_method" value="No">
+			<label for="resolution_method">No</label>
+
+			<p>Does the question have one or more categories assigned?</p>
+			<input type="radio" id="categories_yes" name="categories" value="Yes">
+			<label for="categories">Yes</label>
+			<input type="radio" id="categories_no" name="categories" value="No">
+			<label for="categories">No</label>
+
+			<p>Does the question provide a date by which it resolves in the resolution criteria?</p>
+			<input type="radio" id="resolution_date_yes" name="resolution_date" value="Yes">
+			<label for="resolution_date">Yes</label>
+			<input type="radio" id="resolution_date_no" name="resolution_date" value="No">
+			<label for="resolution_date">No</label>
+
+			<p>Does the question background and resolution criteria present the information neutrally?</p>
+			<input type="radio" id="neutral_yes" name="neutral" value="Yes">
+			<label for="neutral">Yes</label>
+			<input type="radio" id="neutral_no" name="neutral" value="No">
+			<label for="neutral">No</label>
+			
+			<p>Is the question close date appropriate (set to just prior to the resolution date for most questions)?</p>
+			<input type="radio" id="close_date_yes" name="close_date" value="Yes">
+			<label for="close_date">Yes</label>
+			<input type="radio" id="close_date_no" name="close_date" value="No">
+			<label for="close_date">No</label>
+			
+			<p>Is the resolution criteria free from inappropriate retroactive closure specification?</p>
+			<input type="radio" id="retroactive_yes" name="retroactive" value="Yes">
+			<label for="retroactive">Yes</label>
+			<input type="radio" id="retroactive_no" name="retroactive" value="No">
+			<label for="retroactive">No</label>
+			  
+			<p>What type of question is it?</p>
+			  <input type="radio" id="Binary" name="question_type" value="Binary">
+			  <label for="question_type">Binary</label>
+			  <input type="radio" id="Numeric Range" name="question_type" value="Numeric Range">
+			  <label for="question_type">Numeric Range</label>
+			  <input type="radio" id="Date Range" name="question_type" value="Date Range">
+			  <label for="question_type">Date Range</label>
+			  
+			<div id="binary_div">
+				<p>You're working on a binary question</p>
+
+				<p>Does the question resolution criteria use <b>Yes</b>, <b>No</b>, and <b>Ambiguous</b> formatting and clearly state what produces these resolution conditions?</p>
+				<input type="radio" id="binary_formatting_yes" name="binary_formatting" value="Yes">
+				<label for="binary_formatting">Yes</label>
+				<input type="radio" id="binary_formatting_no" name="binary_formatting" value="No">
+				<label for="binary_formatting">No</label>
+
+			</div>
+
+			<div id="numeric_range_div">
+				<p>You're working on a numeric range question</p>
+
+				<p>Is the numeric range reasonable and are the boundaries correctly specified?</p>
+				<input type="radio" id="num_range_yes" name="num_range" value="Yes">
+				<label for="num_range">Yes</label>
+				<input type="radio" id="num_range_no" name="num_range" value="No">
+				<label for="num_range">No</label>
+
+			</div>
+
+			<div id="date_range_div">
+				<p>You're working on a date range question</p>
+				
+				<p>Is the date range reasonable and are the boundaries correctly specified?</p>
+				<input type="radio" id="date_range_yes" name="date_range" value="Yes">
+				<label for="date_range">Yes</label>
+				<input type="radio" id="date_range_no" name="date_range" value="No">
+				<label for="date_range">No</label>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="right_div">
+		
+		<div id="user_div">
+		
+			<p>The following feedback can be <b>edited</b> and then copied and pasted to the user:</p>
+
+			<textarea id="user_feedback" oninput='this.style.height = "";this.style.height = this.scrollHeight + 3 + "px"'></textarea>
+			
+			<button onclick="copyUserFeedback()">Copy text</button>
+
+		</div>
+
+		<div id="mod_div">
+		
+			<p>The following feedback is typically minor enough that mods can handle it, though may be copied below the user feedback if desired:</p>
+
+			<textarea id="mod_feedback" oninput='this.style.height = "";this.style.height = this.scrollHeight + 3 + "px"'></textarea>
+			
+			<button onclick="copyModFeedback()">Copy text</button>
+
+		</div>
+
+	</div>
+
+</div>
+
+<!--
+//build an array of text responses the same length as the number of radio buttons,
+// get value of all radio buttons, and then if "Yes" place the text into a new array,
+// if "No" or "N/A" place an empty string "" into a new array.
+// Loop through the array and output the contents to a string and then to the text box for further editing.
+
+// valuable resource: https://stackoverflow.com/questions/41764755/yes-or-no-radio-button-to-display-a-different-div
+// link to page for this: file:///D:/User%20Files/Forecasting/Metaculus/Moderator%20Response/index.html
+
+// include buttons on textarea element to copy the final text and one to reset the text based on inputs
+
+// adding new lines to a string in javascript https://www.simplilearn.com/tutorials/javascript-tutorial/javascript-new-line#:~:text=The%20newline%20character%20is%20%5Cn,new%20line%20to%20a%20string.
+
+// question writing checklist https://keep.google.com/u/0/#NOTE/1kLpul1uhoreSZ5nyS5MhwvX3-G5xtYimBsMJJWZQlffX5I1yh_-Nlw-ozUQ9nQw4FJqu
+// official metaculus checklist https://www.metaculus.com/help/question-checklist/
+// Michal message: https://discord.com/channels/@me/974024142695309322/1012113746807750666
+// Michal comment: https://www.metaculus.com/questions/11943/will-erdo%25C4%259Fan-remain-president/#comment-97639
+-->
+
+<script>
+		/*
+		$.get( "/responses.csv", function( CSVdata) {
+			  var response = $.csv.toArrays(CSVdata);
+			  console.log(response);
+		  });
+		  
+	*/
+		
+		var response = [];
+		var responseOut = [];
+		
+		async function getResponseData() {
+			return fetch('/responses.csv')
+			.then((res) => res.text())
+			.then((data) => {
+				return data;
+			});
+		}
+		
+		async function caller() {
+			response = $.csv.toArrays(await this.getResponseData());
+			console.log(response);
+			for (let i = 0; i <= response.length - 1; i++) {
+				if(i == '0') {
+					response[i].push("Status");
+				} else {
+					response[i].push("0");
+				}
+			}
+		}
+		
+		caller();
+		
+		//response = $.csv.toArrays(data);
+		
+		
+		
+		//document.getElementById("output").innerHTML = response;
+	
+		$("input:radio").change(function(){
+			console.log(this);
+			if(this.value == 'Yes' && this.name == 'stub'){
+				$('#question_div').slideDown();
+			}else if(this.value == 'No' && this.name == 'stub'){
+				$('#question_div').slideUp();
+			}else if(this.value == 'Binary' && this.name == 'question_type'){
+				$('#binary_div').slideDown();
+				$('#numeric_range_div').slideUp();
+				$('#date_range_div').slideUp();
+			}else if(this.value == 'Numeric Range' && this.name == 'question_type'){
+				$('#binary_div').slideUp();
+				$('#numeric_range_div').slideDown();
+				$('#date_range_div').slideUp();
+			} else if(this.value == 'Date Range' && this.name == 'question_type'){
+				$('#binary_div').slideUp();
+				$('#numeric_range_div').slideUp();
+				$('#date_range_div').slideDown();
+			}
+			
+			outputText();
+		});
+		
+		function outputText() {
+			//NEED TO SET RESPONSE[2][4] TO 1 IF ANY OF THE LATER STATUSES ARE 1 TO OUTPUT FEEDBACK INTRO
+		
+			//is question ready for review
+			if (document.querySelector('input[name="stub"]:checked')?.value == "Yes") {
+				response[1][4] = "0";
+			} else if (document.querySelector('input[name="stub"]:checked')?.value == "No") {
+				response[1][4] = "1";
+			}
+			
+			//sufficient background material
+			if (document.querySelector('input[name="background"]:checked')?.value == "Yes") {
+				response[3][4] = "0";
+			} else if (document.querySelector('input[name="background"]:checked')?.value == "No") {
+				response[3][4] = "1";
+			}
+			
+			//background links
+			if (document.querySelector('input[name="links"]:checked')?.value == "Yes") {
+				response[4][4] = "0";
+			} else if (document.querySelector('input[name="links"]:checked')?.value == "No") {
+				response[4][4] = "1";
+			}
+			
+			//source attribution and quotes
+			if (document.querySelector('input[name="copy"]:checked')?.value == "Yes") {
+				response[5][4] = "0";
+			} else if (document.querySelector('input[name="copy"]:checked')?.value == "No") {
+				response[5][4] = "1";
+			}
+			
+			//source attribution and quotes
+			if (document.querySelector('input[name="date_format"]:checked')?.value == "Yes") {
+				response[6][4] = "0";
+			} else if (document.querySelector('input[name="date_format"]:checked')?.value == "No") {
+				response[6][4] = "1";
+			}
+			
+			//clear resolution source
+			if (document.querySelector('input[name="resolution_source"]:checked')?.value == "Yes") {
+				response[7][4] = "0";
+			} else if (document.querySelector('input[name="resolution_source"]:checked')?.value == "No") {
+				response[7][4] = "1";
+			}
+			
+			//clear resolution method
+			if (document.querySelector('input[name="resolution_method"]:checked')?.value == "Yes") {
+				response[8][4] = "0";
+			} else if (document.querySelector('input[name="resolution_method"]:checked')?.value == "No") {
+				response[8][4] = "1";
+			}
+			
+			//categories assigned
+			if (document.querySelector('input[name="categories"]:checked')?.value == "Yes") {
+				response[9][4] = "0";
+			} else if (document.querySelector('input[name="categories"]:checked')?.value == "No") {
+				response[9][4] = "1";
+			}
+			
+			//resolution date
+			if (document.querySelector('input[name="resolution_date"]:checked')?.value == "Yes") {
+				response[10][4] = "0";
+			} else if (document.querySelector('input[name="resolution_date"]:checked')?.value == "No") {
+				response[10][4] = "1";
+			}
+			
+			//neutral tone
+			if (document.querySelector('input[name="neutral"]:checked')?.value == "Yes") {
+				response[11][4] = "0";
+			} else if (document.querySelector('input[name="neutral"]:checked')?.value == "No") {
+				response[11][4] = "1";
+			}
+			
+			//close date
+			if (document.querySelector('input[name="close_date"]:checked')?.value == "Yes") {
+				response[12][4] = "0";
+			} else if (document.querySelector('input[name="close_date"]:checked')?.value == "No") {
+				response[12][4] = "1";
+			}
+			
+			//retroactive closure
+			if (document.querySelector('input[name="retroactive"]:checked')?.value == "Yes") {
+				response[13][4] = "0";
+			} else if (document.querySelector('input[name="retroactive"]:checked')?.value == "No") {
+				response[13][4] = "1";
+			}
+			
+			//binary resolution formatting
+			if (document.querySelector('input[name="binary_formatting"]:checked')?.value == "Yes" && document.querySelector('input[name="question_type"]:checked')?.value == "Binary") {
+				response[14][4] = "0";
+			} else if (document.querySelector('input[name="binary_formatting"]:checked')?.value == "No" && document.querySelector('input[name="question_type"]:checked')?.value == "Binary") {
+				response[14][4] = "1";
+			}
+			
+			//numeric range appropriate
+			if (document.querySelector('input[name="num_range"]:checked')?.value == "Yes" && document.querySelector('input[name="question_type"]:checked')?.value == "Numeric Range") {
+				response[15][4] = "0";
+			} else if (document.querySelector('input[name="num_range"]:checked')?.value == "No" && document.querySelector('input[name="question_type"]:checked')?.value == "Numeric Range") {
+				response[15][4] = "1";
+			}
+			
+			//date range appropriate
+			if (document.querySelector('input[name="date_range"]:checked')?.value == "Yes" && document.querySelector('input[name="question_type"]:checked')?.value == "Date Range") {
+				response[16][4] = "0";
+			} else if (document.querySelector('input[name="date_range"]:checked')?.value == "No" && document.querySelector('input[name="question_type"]:checked')?.value == "Date Range") {
+				response[16][4] = "1";
+			}
+			
+			
+			//create the output text strings
+			var user_output = "";
+			var mod_output = "";
+			
+			if (response[1][4] == "1") {
+				user_output = response[1][2];
+			} else {
+				for (let i = 2; i <= 13; i++) {
+					if (response[i][3] == "User" && response[i][4] == "1") {
+						user_output = user_output.concat(response[i][2],"\n\n");
+					} else if (response[i][3] == "Mod" && response[i][4] == "1") {
+						mod_output = mod_output.concat(response[i][2],"\n\n");
+					}
+				}
+				
+				//check for question type and add appropriate responses from that type
+				if (document.querySelector('input[name="question_type"]:checked')?.value == "Binary" && response[14][4] == "1") {
+					if (response[14][3] == "User") {
+						user_output = response[14][2].concat(user_output,"\n\n");
+					} else if (response[14][3] == "Mod") {
+						mod_output = response[14][2].concat(mod_output,"\n\n");
+					}
+				} else if (document.querySelector('input[name="question_type"]:checked')?.value == "Numeric Range" && response[15][4] == "1") {
+					if (response[15][3] == "User") {
+						user_output = response[15][2].concat(user_output,"\n\n");
+					} else if (response[15][3] == "Mod") {
+						mod_output = response[15][2].concat(mod_output,"\n\n");
+					}
+				} else if (document.querySelector('input[name="question_type"]:checked')?.value == "Date Range" && response[16][4] == "1") {
+					if (response[16][3] == "User") {
+						user_output = response[16][2].concat(user_output,"\n\n");
+					} else if (response[16][3] == "Mod") {
+						mod_output = response[16][2].concat(mod_output,"\n\n");
+					}
+				} 
+				
+				if (user_output != "") {
+					user_output = response[2][2].concat("\n\n",user_output);
+				}
+			}
+			
+			document.getElementById("user_feedback").innerHTML = user_output;
+			document.getElementById("mod_feedback").innerHTML = mod_output;
+			
+		}
+		
+		
+	function copyUserFeedback() {
+	  // Get the text field
+	  var copyText = document.getElementById("user_feedback");
+
+	  // Select the text field
+	  copyText.select();
+	  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+	   // Copy the text inside the text field
+	  navigator.clipboard.writeText(copyText.value);
+	}
+	
+	function copyModFeedback() {
+	  // Get the text field
+	  var copyText = document.getElementById("mod_feedback");
+
+	  // Select the text field
+	  copyText.select();
+	  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+	   // Copy the text inside the text field
+	  navigator.clipboard.writeText(copyText.value);
+	}
+
+</script>
+
+
+</body>
+</html>
