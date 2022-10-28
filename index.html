@@ -203,7 +203,7 @@
 		var responseOut = [];
 		
 		async function getResponseData() {
-			return fetch('/responses.csv')
+			return fetch('/mod-tool/responses.csv')
 			.then((res) => res.text())
 			.then((data) => {
 				return data;
