@@ -7,14 +7,16 @@
     src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">  
     </script> 
 	
-	<script type="text/javascript" src="/mod-tool/jquery.csv.js"></script>
+	<script type="text/javascript" src="./jquery.csv.js"></script>
 	
 	<link rel="stylesheet" href="style.css">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 
 <body>
 
-<h1>Generate Responses to Question Submissions</h1>
+<h1>Metaculus Question Submission Mod Response Tool</h1>
 
 <div id="container">
 
@@ -25,11 +27,22 @@
 		  <label for="stub_yes">Yes</label>
 		  <input type="radio" id="stub_no" name="stub" value="No" class="show_hide" rel="#question_div">
 		  <label for="stub_no">No</label>
-
-		  <br>  
-
-		<p id="output"></p>
-
+		  
+		<div id="suitable_div">
+			<p>Is this question of general interest or otherwise fit with the <a href="https://www.metaculus.com/help/faq/#question-submission">topics Metaculus typically hosts</a>?</p>
+			  <input type="radio" id="suitable_yes" name="suitable" value="Yes">
+			  <label for="suitable_yes">Yes</label>
+			  <input type="radio" id="suitable_no" name="suitable" value="No" class="show_hide" rel="#question_div">
+			  <label for="suitable_no">No</label>
+		</div>
+		
+		<div id="effort_div">
+			<p>Will the question require less than around 15 minutes of Admin effort to resolve it, or is the question otherwise important enough to justify the level of Admin effort required?</p>
+			<input type="radio" id="effort_yes" name="effort" value="Yes">
+			<label for="effort_yes">Yes</label>
+			<input type="radio" id="effort_no" name="effort" value="No">
+			<label for="effort_no">No</label>
+		</div>
 
 		<div id="question_div">
 			  
@@ -41,80 +54,80 @@
 			  
 			<p>Does the background have links to back up sources? (also check to make sure the links work)</p>
 			  <input type="radio" id="links_yes" name="links" value="Yes">
-			  <label for="links">Yes</label>
+			  <label for="links_yes">Yes</label>
 			  <input type="radio" id="links_no" name="links" value="No">
 			  <label for="links_no">No</label>
 			  
 			<p>Are all parts of the question background and resolution criteria original, or if parts are taken from other sources are Wikipedia are they clearly quoted and attributed?</p>
 			  <input type="radio" id="copy_yes" name="copy" value="Yes">
-			  <label for="copy">Yes</label>
+			  <label for="copy_yes">Yes</label>
 			  <input type="radio" id="copy_no" name="copy" value="No">
 			  <label for="copy_no">No</label>
 			  
 			<p>Are the dates formatted correctly (e.g. "January 1, 2040")</p>
 			  <input type="radio" id="date_format_yes" name="date_format" value="Yes">
-			  <label for="date_format">Yes</label>
+			  <label for="date_format_yes">Yes</label>
 			  <input type="radio" id="date_format_no" name="date_format" value="No">
-			  <label for="date_format">No</label>
+			  <label for="date_format_no">No</label>
 			  
 			<p>Does the question have an authoritative and clear resolution source?</p>
 			<input type="radio" id="resolution_source_yes" name="resolution_source" value="Yes">
-			<label for="resolution_source">Yes</label>
+			<label for="resolution_source_yes">Yes</label>
 			<input type="radio" id="resolution_source_no" name="resolution_source" value="No">
-			<label for="resolution_source">No</label>
+			<label for="resolution_source_no">No</label>
 
 			<p>Does the question have a clear and unambiguous resolution method?</p>
 			<input type="radio" id="resolution_method_yes" name="resolution_method" value="Yes">
-			<label for="resolution_method">Yes</label>
+			<label for="resolution_method_yes">Yes</label>
 			<input type="radio" id="resolution_method_no" name="resolution_method" value="No">
-			<label for="resolution_method">No</label>
+			<label for="resolution_method_no">No</label>
 
 			<p>Does the question have one or more categories assigned?</p>
 			<input type="radio" id="categories_yes" name="categories" value="Yes">
-			<label for="categories">Yes</label>
+			<label for="categories_yes">Yes</label>
 			<input type="radio" id="categories_no" name="categories" value="No">
-			<label for="categories">No</label>
+			<label for="categories_no">No</label>
 
 			<p>Does the question provide a date by which it resolves in the resolution criteria?</p>
 			<input type="radio" id="resolution_date_yes" name="resolution_date" value="Yes">
-			<label for="resolution_date">Yes</label>
+			<label for="resolution_date_yes">Yes</label>
 			<input type="radio" id="resolution_date_no" name="resolution_date" value="No">
-			<label for="resolution_date">No</label>
+			<label for="resolution_date_no">No</label>
 
 			<p>Does the question background and resolution criteria present the information neutrally?</p>
 			<input type="radio" id="neutral_yes" name="neutral" value="Yes">
-			<label for="neutral">Yes</label>
+			<label for="neutral_yes">Yes</label>
 			<input type="radio" id="neutral_no" name="neutral" value="No">
-			<label for="neutral">No</label>
+			<label for="neutral_no">No</label>
 			
 			<p>Is the question close date appropriate (set to just prior to the resolution date for most questions)?</p>
 			<input type="radio" id="close_date_yes" name="close_date" value="Yes">
-			<label for="close_date">Yes</label>
+			<label for="close_date_yes">Yes</label>
 			<input type="radio" id="close_date_no" name="close_date" value="No">
-			<label for="close_date">No</label>
+			<label for="close_date_no">No</label>
 			
 			<p>Is the resolution criteria free from inappropriate retroactive closure specification?</p>
 			<input type="radio" id="retroactive_yes" name="retroactive" value="Yes">
-			<label for="retroactive">Yes</label>
+			<label for="retroactive_yes">Yes</label>
 			<input type="radio" id="retroactive_no" name="retroactive" value="No">
-			<label for="retroactive">No</label>
+			<label for="retroactive_no">No</label>
 			  
 			<p>What type of question is it?</p>
 			  <input type="radio" id="Binary" name="question_type" value="Binary">
-			  <label for="question_type">Binary</label>
+			  <label for="Binary">Binary</label>
 			  <input type="radio" id="Numeric Range" name="question_type" value="Numeric Range">
-			  <label for="question_type">Numeric Range</label>
+			  <label for="Numeric Range">Numeric Range</label>
 			  <input type="radio" id="Date Range" name="question_type" value="Date Range">
-			  <label for="question_type">Date Range</label>
+			  <label for="Date Range">Date Range</label>
 			  
 			<div id="binary_div">
 				<p>You're working on a binary question</p>
 
 				<p>Does the question resolution criteria use <b>Yes</b>, <b>No</b>, and <b>Ambiguous</b> formatting and clearly state what produces these resolution conditions?</p>
 				<input type="radio" id="binary_formatting_yes" name="binary_formatting" value="Yes">
-				<label for="binary_formatting">Yes</label>
+				<label for="binary_formatting_yes">Yes</label>
 				<input type="radio" id="binary_formatting_no" name="binary_formatting" value="No">
-				<label for="binary_formatting">No</label>
+				<label for="binary_formatting_no">No</label>
 
 			</div>
 
@@ -123,9 +136,9 @@
 
 				<p>Is the numeric range reasonable and are the boundaries correctly specified?</p>
 				<input type="radio" id="num_range_yes" name="num_range" value="Yes">
-				<label for="num_range">Yes</label>
+				<label for="num_range_yes">Yes</label>
 				<input type="radio" id="num_range_no" name="num_range" value="No">
-				<label for="num_range">No</label>
+				<label for="num_range_no">No</label>
 
 			</div>
 
@@ -134,9 +147,9 @@
 				
 				<p>Is the date range reasonable and are the boundaries correctly specified?</p>
 				<input type="radio" id="date_range_yes" name="date_range" value="Yes">
-				<label for="date_range">Yes</label>
+				<label for="date_range_yes">Yes</label>
 				<input type="radio" id="date_range_no" name="date_range" value="No">
-				<label for="date_range">No</label>
+				<label for="date_range_no">No</label>
 			</div>
 
 		</div>
@@ -201,7 +214,7 @@
 		var responseOut = [];
 		
 		async function getResponseData() {
-			return fetch('/mod-tool/responses.csv')
+			return fetch('./responses.csv')
 			.then((res) => res.text())
 			.then((data) => {
 				return data;
@@ -231,8 +244,28 @@
 		$("input:radio").change(function(){
 			console.log(this);
 			if(this.value == 'Yes' && this.name == 'stub'){
-				$('#question_div').slideDown();
+				$('#suitable_div').slideDown();
+				if(document.querySelector('input[name="suitable"]:checked')?.value == "Yes") {
+					$('#effort_div').slideDown();
+					if(document.querySelector('input[name="effort"]:checked')?.value == "Yes") {
+						$('#question_div').slideDown();
+					}
+				}
 			}else if(this.value == 'No' && this.name == 'stub'){
+				$('#suitable_div').slideUp();
+				$('#effort_div').slideUp();
+				$('#question_div').slideUp();
+			}else if(this.value == 'Yes' && this.name == 'suitable' && document.querySelector('input[name="stub"]:checked')?.value == "Yes"){
+				$('#effort_div').slideDown();
+				if(document.querySelector('input[name="stub"]:checked')?.value == "Yes" && document.querySelector('input[name="effort"]:checked')?.value == "Yes") {
+					$('#question_div').slideDown();
+				}
+			}else if(this.value == 'Yes' && this.name == 'effort' && document.querySelector('input[name="stub"]:checked')?.value == "Yes" && document.querySelector('input[name="suitable"]:checked')?.value == "Yes"){
+				$('#question_div').slideDown();
+			}else if(this.value == 'No' && this.name == 'suitable'){
+				$('#effort_div').slideUp();
+				$('#question_div').slideUp();
+			}else if(this.value == 'No' && this.name == 'effort'){
 				$('#question_div').slideUp();
 			}else if(this.value == 'Binary' && this.name == 'question_type'){
 				$('#binary_div').slideDown();
@@ -359,6 +392,20 @@
 				response[16][4] = "1";
 			}
 			
+			//question topic
+			if (document.querySelector('input[name="suitable"]:checked')?.value == "Yes") {
+				response[17][4] = "0";
+			} else if (document.querySelector('input[name="suitable"]:checked')?.value == "No") {
+				response[17][4] = "1";
+			}
+			
+			//admin effort
+			if (document.querySelector('input[name="effort"]:checked')?.value == "Yes") {
+				response[18][4] = "0";
+			} else if (document.querySelector('input[name="effort"]:checked')?.value == "No") {
+				response[18][4] = "1";
+			}
+			
 			
 			//create the output text strings
 			var user_output = "";
@@ -366,6 +413,10 @@
 			
 			if (response[1][4] == "1") {
 				user_output = response[1][2];
+			} else if (response[17][4] == "1") {
+				user_output = response[17][2];
+			} else if (response[18][4] == "1") {
+				user_output = response[18][2];
 			} else {
 				for (let i = 2; i <= 13; i++) {
 					if (response[i][3] == "User" && response[i][4] == "1") {

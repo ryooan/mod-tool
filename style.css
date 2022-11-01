@@ -4,7 +4,7 @@ html,body {
 	padding-bottom: 100px;
 }
 
-#question_div, #binary_div, #numeric_range_div, #date_range_div{
+#question_div, #binary_div, #numeric_range_div, #date_range_div, #suitable_div, #effort_div{
 display:none;
 }
 
